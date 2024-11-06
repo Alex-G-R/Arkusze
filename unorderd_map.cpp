@@ -31,6 +31,7 @@ using PropertyValue = std::variant<int, double, std::string, Color, Size>;
 class PropertyBlock {
 public:
     // Constructor for initializing properties in one line
+    // variable number of arguments in constructors or functions. - explore further later 
     PropertyBlock(std::initializer_list<std::pair<std::string, PropertyValue>> init) {
         for (const auto& [key, value] : init) {
             properties[key] = value;
