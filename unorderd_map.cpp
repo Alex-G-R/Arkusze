@@ -46,8 +46,14 @@ public:
                 std::cout << key << ": ";
 
                 // Use std::visit to access the variant's value
+                // [&] -> Capture the whole local scope by reference
+                // auto&& arg -> forwarding reference binding to lvalue and rvalue
                 std::visit([&](auto&& arg) {
                     // Handle each type accordingly
+                    // std::is_same_v<T, U> -> Check if they are the sane type | true/false
+                    // decltype(argument) -> deduce the type of the argument, simply look at it
+                    // std::decay_t<T> -> 'decays' certaint qualifires like const, volitile this ensures that you will compare int with int not an const int& with int
+                    // if constexpr -> Comppiler decides at runtime witch code bit to use depending on the args of the if
                     if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, int>) {
                         std::cout << arg; // Handle int
                     } else if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, double>) {
