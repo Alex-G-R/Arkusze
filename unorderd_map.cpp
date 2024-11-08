@@ -54,7 +54,7 @@ public:
                     // std::is_same_v<T, U> -> Check if they are the sane type | true/false
                     // decltype(argument) -> deduce the type of the argument, simply look at it
                     // std::decay_t<T> -> 'decays' certaint qualifires like const, volitile this ensures that you will compare int with int not an const int& with int
-                    // if constexpr -> Comppiler decides at runtime witch code bit to use depending on the args of the if
+                    // if constexpr -> Comppiler decides at runtime witch code part to use depending on the arguments in the if cluase
                     if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, int>) {
                         std::cout << arg; // Handle int
                     } else if constexpr (std::is_same_v<std::decay_t<decltype(arg)>, double>) {
